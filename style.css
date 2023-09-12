@@ -107,12 +107,6 @@ button {
   cursor: pointer;
 }
 
-button#populateButton,
-button#emptyButton {
-  color: white;
-  background-color: #3b82f6;
-}
-
 .btn-delete {
   color: rgb(211, 86, 86);
   background-color: white;
@@ -138,4 +132,40 @@ button#emptyButton {
 
 .btn-unfinish:hover {
   background-color: #f59e0b;
+}
+
+/* TOOLS */
+.section__tools {
+  /* background-color: white; */
+  background-color: inherit;
+}
+
+.section__tools div {
+  margin-top: 1rem;
+}
+
+.section__tools input[type="search"] {
+  padding: 10px 16px;
+  margin-left: 8px;
+  border: none;
+  font-size: 1rem;
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.7);
+  background-color: white;
+}
+
+.section__tools button {
+  padding: 12px 16px;
+  font-weight: 600;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+button#populateButton {
+  color: white;
+  background-color: #3b82f6;
+}
+
+button#emptyButton {
+  color: rgb(211, 86, 86);
+  background-color: white;
 }
