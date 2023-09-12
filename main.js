@@ -1,9 +1,12 @@
+const storageKey = 'BOOKSHELF';
 let books = [];
 
 document.addEventListener('DOMContentLoaded', ()=>{
   document.getElementById('bookForm').addEventListener('submit', submitHandler);
   document.getElementById('populateButton').addEventListener('click', populateBooks);
   document.getElementById('searchInput').addEventListener('input', searchHandler);
+
+  books = loadBooks();
   renderBooks(books);
 });
 
@@ -17,6 +20,7 @@ const submitHandler = (e) => {
   books.push(getFormBook());
   e.target.reset();
   renderBooks(books);
+  saveBooks(books);
 }
 
 const getFormBook = () => {
@@ -35,6 +39,23 @@ const isValidForm = () => {
   const tahun = document.getElementById('inputTahun').value;
 
   return (judul && penulis && tahun);
+}
+
+const isStorageAvailable = () => (typeof (Storage) !== 'undefined');
+
+const loadBooks = () => {
+  if(!isStorageAvailable) return [];
+  
+  const storageData = localStorage.getItem(storageKey);
+  if( storageData === null) return [];
+  
+  return JSON.parse(storageData);
+}
+
+const saveBooks = (booksToSave) => {
+  if(!isStorageAvailable) return;
+
+  localStorage.setItem(storageKey, JSON.stringify(booksToSave));
 }
 
 const createEmptyBookElement = (text) => {
@@ -152,6 +173,7 @@ const populateBooks = () => {
   ];
 
   renderBooks(books);
+  saveBooks(books);
 }
 
 const searchHandler = (e) => {
@@ -168,15 +190,18 @@ const searchHandler = (e) => {
 
 const deleteHandler = (id, title) => {
   const proceed = confirm(`Apakah Anda yakin ingin menghapus ${title}?`);
-
   if(!proceed) return;
 
   books = books.filter((book) => book.id != id);
+  
   renderBooks(books);
+  saveBooks(books);
 }
 
 const moveRackHandler = (id, isComplete) => {
   const index = books.findIndex((book) => book.id == id);
   books[index].isComplete = !isComplete;
+
   renderBooks(books);
+  saveBooks(books);
 }
