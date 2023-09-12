@@ -23,9 +23,26 @@ p {
 
 body {
   display: block;
-  max-width: 1000px;
   background-color: rgb(245, 247, 250);
+}
+
+body > header {
+  position: relative;
+  z-index: 5;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body > header h1 {
+  margin-left: 3rem;
+  color: #172554;
+}
+
+main {
+  max-width: 1000px;
   margin: auto;
+  margin-top: 2rem;
 }
 
 main section {
@@ -211,4 +228,13 @@ button#emptyButton {
 
 .book button {
   margin-right: 8px;
+}
+
+footer {
+  margin-top: 2rem;
+  padding: 16px;
+  background-color: #172554;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  letter-spacing: 0.6px;
 }
