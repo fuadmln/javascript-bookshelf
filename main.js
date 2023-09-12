@@ -50,8 +50,12 @@ const createBookElement = (book) => {
   const yearElm = createElement('span', 'book__year', ` (${year})`);
   const authorElm = createElement('p', 'book__author', `oleh ${author}`);
   const deleteBtn = createElement('button', 'btn-delete', 'Hapus');
-  let moveBtn;
+  
+  deleteBtn.addEventListener('click', ()=> {
+    deleteHandler(id, title);
+  });
 
+  let moveBtn;
   if(isComplete){
     moveBtn = createElement('button', 'btn-unfinish', 'Belum Selesai Baca');
   } else{
@@ -158,5 +162,14 @@ const searchHandler = (e) => {
     return;
   }
 
+  renderBooks(books);
+}
+
+const deleteHandler = (id, title) => {
+  const proceed = confirm(`Apakah Anda yakin ingin menghapus ${title}?`);
+
+  if(!proceed) return;
+
+  books = books.filter((book) => book.id != id);
   renderBooks(books);
 }
