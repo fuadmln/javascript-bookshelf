@@ -13,7 +13,7 @@ const submitHandler = (e) => {
 
   books.push(getFormBook());
   e.target.reset();
-  console.log(books);
+  renderBooks();
 }
 
 const getFormBook = () => {
@@ -32,4 +32,22 @@ const isValidForm = () => {
   const tahun = document.getElementById('inputTahun').value;
 
   return (judul && penulis && tahun);
+}
+
+const createEmptyBookElement = (text) => {
+  const element = document.createElement('p');
+  element.innerText = text;
+  return element;
+}
+
+const renderBooks = () => {
+  const unfinishedContainer = document.getElementById('unfinishedBooks');
+  const finishedContainer = document.getElementById('finishedBooks');
+
+  if(!finishedContainer.hasChildNodes()){
+    finishedContainer.appendChild(createEmptyBookElement('Belum ada buku yang selesai dibaca'));
+  }
+  if(!unfinishedContainer.hasChildNodes()){
+    unfinishedContainer.appendChild(createEmptyBookElement('Tidak ada buku yang belum selesai dibaca'));
+  }
 }
