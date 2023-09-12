@@ -43,7 +43,7 @@ const createEmptyBookElement = (text) => {
   return element;
 }
 
-createBookElement = (book) => {
+const createBookElement = (book) => {
   const {id, title, author, year, isComplete} = book;
 
   const titleElm = createElement('h3', 'book__title', title);
