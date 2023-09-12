@@ -3,8 +3,9 @@ let books = [];
 
 document.addEventListener('DOMContentLoaded', ()=>{
   document.getElementById('bookForm').addEventListener('submit', submitHandler);
-  document.getElementById('populateButton').addEventListener('click', populateBooks);
-  document.getElementById('searchInput').addEventListener('input', searchHandler);
+  document.getElementById('populateButton').addEventListener('click', populateBooksHandler);
+  document.getElementById('emptyButton').addEventListener('click', emptyRackHandler);
+  document.getElementById('searchInput').addEventListener('input', searchBookHandler);
 
   books = loadBooks();
   renderBooks(books);
@@ -73,7 +74,7 @@ const createBookElement = (book) => {
   const deleteBtn = createElement('button', 'btn-delete', 'Hapus');
   
   deleteBtn.addEventListener('click', ()=> {
-    deleteHandler(id, title);
+    deleteBookHandler(id, title);
   });
 
   let moveBtn;
@@ -133,7 +134,7 @@ const renderBooks = (booksToRender) => {
   }
 }
 
-const populateBooks = () => {
+const populateBooksHandler = () => {
   books = [
     {
       id: 1,
@@ -176,7 +177,7 @@ const populateBooks = () => {
   saveBooks(books);
 }
 
-const searchHandler = (e) => {
+const searchBookHandler = (e) => {
   const keyword = e.target.value;
 
   if(keyword){
@@ -188,7 +189,7 @@ const searchHandler = (e) => {
   renderBooks(books);
 }
 
-const deleteHandler = (id, title) => {
+const deleteBookHandler = (id, title) => {
   const proceed = confirm(`Apakah Anda yakin ingin menghapus ${title}?`);
   if(!proceed) return;
 
@@ -202,6 +203,15 @@ const moveRackHandler = (id, isComplete) => {
   const index = books.findIndex((book) => book.id == id);
   books[index].isComplete = !isComplete;
 
+  renderBooks(books);
+  saveBooks(books);
+}
+
+const emptyRackHandler = () => {
+  const proceed = confirm('Semua buku akan dihapus, apakah anda yakin?');
+  if(!proceed) return;
+  
+  books = [];
   renderBooks(books);
   saveBooks(books);
 }
