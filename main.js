@@ -3,7 +3,8 @@ let books = [];
 document.addEventListener('DOMContentLoaded', ()=>{
   document.getElementById('bookForm').addEventListener('submit', submitHandler);
   document.getElementById('populateButton').addEventListener('click', populateBooks);
-  renderBooks();
+  document.getElementById('searchInput').addEventListener('input', searchHandler);
+  renderBooks(books);
 });
 
 const submitHandler = (e) => {
@@ -15,7 +16,7 @@ const submitHandler = (e) => {
 
   books.push(getFormBook());
   e.target.reset();
-  renderBooks();
+  renderBooks(books);
 }
 
 const getFormBook = () => {
@@ -83,20 +84,20 @@ const removeChilds = (container) => {
   }
 }
 
-const renderBooks = () => {
+const renderBooks = (booksToRender) => {
   const unfinishedContainer = document.getElementById('unfinishedBooks');
   const finishedContainer = document.getElementById('finishedBooks');
 
-removeChilds(unfinishedContainer);
-removeChilds(finishedContainer);
+  removeChilds(unfinishedContainer);
+  removeChilds(finishedContainer);
 
-books.forEach((book) => {
-  if(book.isComplete){
-    finishedContainer.appendChild(createBookElement(book));
-  } else {
-    unfinishedContainer.appendChild(createBookElement(book));
-  }
-});
+  booksToRender.forEach((book) => {
+    if(book.isComplete){
+      finishedContainer.appendChild(createBookElement(book));
+    } else {
+      unfinishedContainer.appendChild(createBookElement(book));
+    }
+  });
 
   if(!finishedContainer.hasChildNodes()){
     finishedContainer.appendChild(createEmptyBookElement('Belum ada buku yang selesai dibaca'));
@@ -144,6 +145,18 @@ const populateBooks = () => {
       isComplete: true,
     },
   ];
+
+  renderBooks(books);
+}
+
+const searchHandler = (e) => {
+  const keyword = e.target.value;
+
+  if(keyword){
+    const filteredBooks = books.filter((book) => book.title.toLowerCase().includes(keyword));
+    renderBooks(filteredBooks);
+    return;
+  }
 
   renderBooks(books);
 }
