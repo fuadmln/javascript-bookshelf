@@ -6,7 +6,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 const submitHandler = (e) => {
   e.preventDefault();
-  console.log(getFormBook());
+  if(!isValidForm()){
+    alert('harap isi form judul, penulis, tahun dengan benar!');
+    return;
+  }
+
+  books.push(getFormBook());
+  e.target.reset();
+  console.log(books);
 }
 
 const getFormBook = () => {
@@ -17,4 +24,12 @@ const getFormBook = () => {
     year: document.getElementById('inputTahun').value,
     isComplete: document.getElementById('inputSelesai').checked
   }
+}
+
+const isValidForm = () => {
+  const judul = document.getElementById('inputJudul').value;
+  const penulis = document.getElementById('inputPenulis').value;
+  const tahun = document.getElementById('inputTahun').value;
+
+  return (judul && penulis && tahun);
 }
