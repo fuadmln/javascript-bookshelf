@@ -29,9 +29,7 @@ body {
 }
 
 main section {
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background-color: white;
+  padding: 0.8rem 1.5rem;
 }
 
 main section:last-child {
@@ -41,7 +39,6 @@ main section:last-child {
 /* FORM */
 .section__form {
   display: block;
-  background-color: inherit;
 }
 
 .section__form h2 {
@@ -136,7 +133,6 @@ button {
 
 /* TOOLS */
 .section__tools {
-  /* background-color: white; */
   background-color: inherit;
 }
 
@@ -168,4 +164,51 @@ button#populateButton {
 button#emptyButton {
   color: rgb(211, 86, 86);
   background-color: white;
+}
+
+/* BOOK */
+.section__books h2 {
+  margin-bottom: 1rem;
+}
+.section__books #finishedBooks,
+.section__books #unfinishedBooks {
+  border: 0.8px solid rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.section__books #finishedBooks .empty-book,
+.section__books #unfinishedBooks .empty-book {
+  padding: 12px;
+  font-style: italic;
+}
+
+.section__books .book {
+  padding: 16px 24px;
+  background-color: white;
+  border-bottom: 0.8px solid rgba(0, 0, 0, 0.3);
+}
+
+.book header {
+  margin-bottom: 0.6rem;
+}
+
+.book .book__title {
+  display: inline;
+}
+
+.book .book__year {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.book .book__author {
+  margin-bottom: 0.4rem;
+}
+
+.book button {
+  margin-right: 8px;
 }

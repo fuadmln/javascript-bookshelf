@@ -59,11 +59,7 @@ const saveBooks = (booksToSave) => {
   localStorage.setItem(storageKey, JSON.stringify(booksToSave));
 }
 
-const createEmptyBookElement = (text) => {
-  const element = document.createElement('p');
-  element.innerText = text;
-  return element;
-}
+const createEmptyBookElement = (text) => createElement('p', 'empty-book', text);
 
 const createBookElement = (book) => {
   const {id, title, author, year, isComplete} = book;
