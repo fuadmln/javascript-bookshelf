@@ -1,0 +1,141 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background-color: rgb(245, 247, 250);
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: block;
+  max-width: 1000px;
+  background-color: rgb(245, 247, 250);
+  margin: auto;
+}
+
+main section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: white;
+}
+
+main section:last-child {
+  margin-bottom: 0;
+}
+
+/* FORM */
+.section__form {
+  display: block;
+  background-color: inherit;
+}
+
+.section__form h2 {
+  text-align: center;
+}
+
+.section__form form {
+  max-width: 320px;
+  margin: 1rem auto;
+  padding-top: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.section__form form div {
+  margin-bottom: 1rem;
+  padding: 0 1.5rem;
+}
+
+.section__form form label {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.section__form form input {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(245, 247, 250);
+}
+
+.section__form form input[type="checkbox"] {
+  display: inline;
+  width: auto;
+}
+
+.section__form form button {
+  width: 100%;
+  padding: 16px;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background-color: #172554;
+}
+
+.section__form form button:hover {
+  background-color: #1e1b4b;
+}
+
+/* BUTTON */
+button {
+  border: 0px;
+  margin-right: 4px;
+  padding: 8px 10px;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+button#populateButton,
+button#emptyButton {
+  color: white;
+  background-color: #3b82f6;
+}
+
+.btn-delete {
+  color: rgb(211, 86, 86);
+  background-color: white;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.btn-delete:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.btn-finish {
+  color: white;
+  background-color: #16a34a;
+}
+
+.btn-finish:hover {
+  background-color: #15803d;
+}
+
+.btn-unfinish {
+  background-color: #fbbf24;
+}
+
+.btn-unfinish:hover {
+  background-color: #f59e0b;
+}
