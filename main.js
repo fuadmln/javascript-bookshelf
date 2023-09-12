@@ -56,11 +56,12 @@ const createBookElement = (book) => {
   });
 
   let moveBtn;
-  if(isComplete){
-    moveBtn = createElement('button', 'btn-unfinish', 'Belum Selesai Baca');
-  } else{
-    moveBtn = createElement('button', 'btn-finish', 'Selesai Baca');
-  }
+  if(isComplete) moveBtn = createElement('button', 'btn-unfinish', 'Belum Selesai Baca');
+  else moveBtn = createElement('button', 'btn-finish', 'Selesai Baca');
+
+  moveBtn.addEventListener('click', () => {
+    moveRackHandler(id, isComplete);
+  })
 
   const headerElm = document.createElement('header');
   headerElm.appendChild(titleElm).appendChild(yearElm);
@@ -171,5 +172,11 @@ const deleteHandler = (id, title) => {
   if(!proceed) return;
 
   books = books.filter((book) => book.id != id);
+  renderBooks(books);
+}
+
+const moveRackHandler = (id, isComplete) => {
+  const index = books.findIndex((book) => book.id == id);
+  books[index].isComplete = !isComplete;
   renderBooks(books);
 }
