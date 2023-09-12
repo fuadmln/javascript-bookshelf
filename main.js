@@ -2,6 +2,7 @@ let books = [];
 
 document.addEventListener('DOMContentLoaded', ()=>{
   document.getElementById('bookForm').addEventListener('submit', submitHandler);
+  document.getElementById('populateButton').addEventListener('click', populateBooks);
   renderBooks();
 });
 
@@ -103,4 +104,46 @@ books.forEach((book) => {
   if(!unfinishedContainer.hasChildNodes()){
     unfinishedContainer.appendChild(createEmptyBookElement('Tidak ada buku yang belum selesai dibaca'));
   }
+}
+
+const populateBooks = () => {
+  books = [
+    {
+      id: 1,
+      title: 'Harry Potter',
+      author: 'J.K. Rowling',
+      year: '1997',
+      isComplete: false,
+    },
+    {
+      id: 2,
+      title: 'Supernova',
+      author: 'Dewi Lestari',
+      year: '2001',
+      isComplete: false,
+    },
+    {
+      id: 3,
+      title: 'Hujan',
+      author: 'Tere Liye',
+      year: '2016',
+      isComplete: true,
+    },
+    {
+      id: 4,
+      title: 'Negri 5 Menara',
+      author: 'Ahmad Fuadi',
+      year: '2009',
+      isComplete: false,
+    },
+    {
+      id: 5,
+      title: 'Naruto',
+      author: 'Masashi Kishimoto',
+      year: '2000',
+      isComplete: true,
+    },
+  ];
+
+  renderBooks(books);
 }
