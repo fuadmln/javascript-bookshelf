@@ -2,6 +2,7 @@ let books = [];
 
 document.addEventListener('DOMContentLoaded', ()=>{
   document.getElementById('bookForm').addEventListener('submit', submitHandler);
+  renderBooks();
 });
 
 const submitHandler = (e) => {
@@ -40,9 +41,61 @@ const createEmptyBookElement = (text) => {
   return element;
 }
 
+createBookElement = (book) => {
+  const {id, title, author, year, isComplete} = book;
+
+  const titleElm = createElement('h3', 'book__title', title);
+  const yearElm = createElement('span', 'book__year', ` (${year})`);
+  const authorElm = createElement('p', 'book__author', `oleh ${author}`);
+  const deleteBtn = createElement('button', 'btn-delete', 'Hapus');
+  let moveBtn;
+
+  if(isComplete){
+    moveBtn = createElement('button', 'btn-unfinish', 'Belum Selesai Baca');
+  } else{
+    moveBtn = createElement('button', 'btn-finish', 'Selesai Baca');
+  }
+
+  const headerElm = document.createElement('header');
+  headerElm.appendChild(titleElm).appendChild(yearElm);
+
+  const container = document.createElement('div');
+  container.className = 'book';
+  container.appendChild(headerElm);
+  container.appendChild(authorElm);
+  container.appendChild(moveBtn);
+  container.appendChild(deleteBtn);
+
+  return container;
+}
+
+const createElement = (tag, className, text) => {
+  const element = document.createElement(tag);
+  element.className = className;
+  element.innerText = text
+  return element;
+}
+
+const removeChilds = (container) => {
+  while(container.hasChildNodes()){
+    container.removeChild(container.firstChild);
+  }
+}
+
 const renderBooks = () => {
   const unfinishedContainer = document.getElementById('unfinishedBooks');
   const finishedContainer = document.getElementById('finishedBooks');
+
+removeChilds(unfinishedContainer);
+removeChilds(finishedContainer);
+
+books.forEach((book) => {
+  if(book.isComplete){
+    finishedContainer.appendChild(createBookElement(book));
+  } else {
+    unfinishedContainer.appendChild(createBookElement(book));
+  }
+});
 
   if(!finishedContainer.hasChildNodes()){
     finishedContainer.appendChild(createEmptyBookElement('Belum ada buku yang selesai dibaca'));
