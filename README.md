@@ -5,7 +5,7 @@ Submission Aplikasi Pengelolaan Data Buku Menggunakan DOM dan Web Storage dari k
 ## Link
 
 [Source Code](https://github.com/fuadmln/javascript-bookshelf) <br>
-Demo (coming soon)
+[Demo](https://javascript-bookshelf.web.app)
 
 ## Fitur
 
